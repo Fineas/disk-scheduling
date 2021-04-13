@@ -3,15 +3,16 @@
 #include <algorithm>
 #include "schedule.h"
 
-class Scan : public ScheduleAlgoritm {
+class Cscan : public ScheduleAlgoritm {
 
     public:
 
-        void run() { // go left first
+        void run() { // go right
 
             std::cout<<"Running inside "<<this->alg_name<<std::endl;
 
-            this->direction = 1;
+            this->direction = 2;
+            this->setQueue();
             //this->displayQueue();
 
             if(this->queue.size() != 0){
@@ -29,17 +30,14 @@ class Scan : public ScheduleAlgoritm {
                     //this->displayQueue();
 
                     // determin next move position
-                    if(this->head != 0 && this->direction == 1) { // go to next left elem
-                        current_track =  nextSmaller(this->head);
-                    }
-                    else if(this->direction == 1 && this->head == 0) { // reached the last left elem
-                        current_track =  nextLarger(this->head);
-                    }
-                    else if(this->head != this->blocks && this->direction == 2) { // go to next right elem
+                    if(this->head != this->blocks && this->direction == 2) { // go to next left elem
                         current_track =  nextLarger(this->head);
                     }
                     else if(this->direction == 2 && this->head == this->blocks) { // reached the last right elem
-                        current_track =  nextSmaller(this->head);
+                        current_track =  0;
+                    }
+                    else if(this->head != this->blocks && this->direction ==1 ) {
+                        current_track =  nextLarger(this->head);
                     }
                     
                     distance = abs(current_track - this->head);
@@ -67,9 +65,9 @@ class Scan : public ScheduleAlgoritm {
             this->formatOutputToFile();
         }
 
-        Scan(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
-            this -> alg_name = "SCAN (Elevator)";
-            this -> file_name = "output/scan_output.txt";
+        Cscan(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
+            this -> alg_name = "Cscan (Circular Elevator)";
+            this -> file_name = "output/cscan_output.txt";
             this -> fout.open(this -> file_name);
         }
 
@@ -77,20 +75,6 @@ class Scan : public ScheduleAlgoritm {
                 
 
     private:
-
-        int nextSmaller(int head) {
-            int low = 0; 
-            // locate value
-            for(int it : this->queue) {
-                if(it > low && it < head) {
-                    low = it;
-                }
-            }
-            if (low != 0)
-                return *(std :: find(this->queue.begin(), this->queue.end(), low)); // return index
-            else
-                return low;
-        }
 
         int nextLarger(int head) {
             int high = this->blocks; 

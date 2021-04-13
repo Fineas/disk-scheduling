@@ -6,17 +6,25 @@ class Fcfs : public virtual ScheduleAlgoritm {
 
     public:
 
-        int run() {
+        void run() {
 
+            std::cout<<"Running inside "<<this->alg_name<<std::endl;
+            //this->displayQueue();
 
-            this->setQueue();
+            if(this->queue.size() != 0){
+                this -> trace.push_back(this->head);
+            }
+
             while(this -> status) {
                 
                 int current_track = 0;
                 int distance = 0;
 
+                this->setQueue();
+
                 while(!this->queue.empty()) {
-                    this -> displayQueue();
+                    //this -> displayQueue();
+                    this->setQueue();
 
                     std :: vector<int>::iterator it = this -> queue.begin(); 
                     current_track = *it;
@@ -29,9 +37,19 @@ class Fcfs : public virtual ScheduleAlgoritm {
                     if(this->direction != 0) {
                         if(this->direction == 1 && this->head < current_track) {
                             this -> cost_count += rotation;
+                            this->direction = 2;
                         }
                         if(this->direction == 2 && this->head > current_track) {
                             this -> cost_count += rotation;
+                            this->direction = 1;
+                        }
+                    }
+                    else{ // set direction according to the first move direction
+                        if(this->head < current_track) {
+                            this->direction = 2;
+                        }
+                        else{
+                            this->direction = 1;
                         }
                     }
 
@@ -42,12 +60,14 @@ class Fcfs : public virtual ScheduleAlgoritm {
                     usleep(100000);
                 }
             }
-            this->displayTrace();
-            return this -> cost_count;
+            //this->displayTrace();
+            this->formatOutputToFile();
         }
 
-        Fcfs(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag) {
+        Fcfs(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
             this -> alg_name = "First Come First Serve (FCFS)";
+            this -> file_name = "output/fcfs_output.txt";
+            this -> fout.open(this -> file_name);
         }
                 
 

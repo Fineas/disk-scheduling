@@ -3,15 +3,22 @@
 #include <algorithm>
 #include "schedule.h"
 
-class Sstf : public virtual ScheduleAlgoritm {
+class Sstf : public ScheduleAlgoritm {
 
     public:
 
-        int run() {
+        void run() {
 
-            this->setQueue();
+            std::cout<<"Running inside "<<this->alg_name<<std::endl;
+            //this->displayQueue();
+
+            if(this->queue.size() != 0){
+                this -> trace.push_back(this->head);
+            }
+
             while(this -> status) {
-            
+
+                this->setQueue();
                 int current_track = 0;
                 int distance = 0;
 
@@ -27,9 +34,19 @@ class Sstf : public virtual ScheduleAlgoritm {
                     if(this->direction != 0) {
                         if(this->direction == 1 && this->head < current_track) {
                             this -> cost_count += rotation;
+                            this->direction = 2;
                         }
                         if(this->direction == 2 && this->head > current_track) {
                             this -> cost_count += rotation;
+                            this->direction = 1;
+                        }
+                    }
+                    else{ // set direction according to the first move direction
+                        if(this->head < current_track) {
+                            this->direction = 2;
+                        }
+                        else{
+                            this->direction = 1;
                         }
                     }
 
@@ -41,12 +58,14 @@ class Sstf : public virtual ScheduleAlgoritm {
                 }
 
             }
-            this->displayTrace();
-            return this -> cost_count;
+            //this->displayTrace();
+            this->formatOutputToFile();
         }
 
-        Sstf(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag) {
+        Sstf(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
             this -> alg_name = "Shortest Seek Time First (SSTF)";
+            this -> file_name = "output/sstf_output.txt";
+            this -> fout.open(this -> file_name);
         }
 
         
@@ -56,12 +75,13 @@ class Sstf : public virtual ScheduleAlgoritm {
 
         int getMinDiff(int head) {
                 unsigned int diff = 0xffffffff;
-                int queue_idx = 0;
+                int queue_idx = 0, counter = 0;
                 for (std :: vector<int>::iterator it = this->queue.begin(); it != this->queue.end(); ++it) {
-                    if(diff < abs(head - *it)){
-                        diff = abs(head = *it);
+                    if(abs(head - *it) < diff){
+                        diff = abs(head - *it);
+                        queue_idx = counter;
                     }
-                    queue_idx++;
+                    counter++;
                 }
                 return queue_idx;
             }
