@@ -17,7 +17,7 @@ class ScheduleAlgoritm {
 
         virtual void run() = 0;
 
-        ScheduleAlgoritm(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : queue_data{queue_data}, status{flag}, newd{newd} {
+        ScheduleAlgoritm(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int &newd_len) : queue_data{queue_data}, status{flag}, newd{newd}, newd_len{newd_len} {
             /*
                 Constructor
             */
@@ -38,7 +38,7 @@ class ScheduleAlgoritm {
             this -> fout.close();
         };
 
-        ScheduleAlgoritm(const ScheduleAlgoritm& obj) : queue_data{obj.queue_data}, status{obj.status}, newd{obj.newd} {
+        ScheduleAlgoritm(const ScheduleAlgoritm& obj) : queue_data{obj.queue_data}, status{obj.status}, newd{obj.newd}, newd_len{obj.newd_len} {
             /*
                 Copy Constructor
             */
@@ -60,10 +60,19 @@ class ScheduleAlgoritm {
             /* 
                 Routine to update the Queue
             */
-            if(this->newd){
-                this -> queue.insert(this->queue.end(), this->queue_data.begin(), this->queue_data.end());
-                this->newd = 0;
+            int count = 0;
+            // this->fout << "Nou ajuns\n";
+            while(count != this->newd_len && this->newd_len != 0){
+                // this->fout << "Sunt aiiici " << count << " " << this->newd_len << "\n";
+                if(this->newd){
+                    this->fout << "New element available, total= " << this->newd_len << "\n";
+                    this->queue.insert(this->queue.end(), this->queue_data.begin(), this->queue_data.end());
+                    this->writeToFile(this->strQueue());
+                    this->newd = 0;
+                    count++;
+                }
             }
+            count = 0;
         }
 
         void displayQueue(){ 
@@ -89,7 +98,9 @@ class ScheduleAlgoritm {
         }
 
         void formatOutputToFile() {
-
+            /* 
+                Write final output to file
+            */
             try{
 
                 std :: string border = "======================================";
@@ -112,6 +123,27 @@ class ScheduleAlgoritm {
 
         }
 
+        std::string strQueue(){
+            /* 
+                Return a string representation of the current queue
+            */            
+            std::string ret = "";
+            ret.append("Queue = [ ");
+            for (std :: vector<int>::iterator it = this -> queue.begin(); it != this -> queue.end(); ++it) {
+                ret.append(std::to_string(*it));
+                ret.append(", ");
+            }
+            ret.append("]\n");
+            return ret;
+        }
+
+        void writeToFile(std::string data) {
+            /* 
+                Write String to file
+            */
+            this->fout << data << std :: endl;
+        }
+
     private:
 
         std :: vector<int> &queue_data;  // Incoming data to be added to the Queue
@@ -120,6 +152,7 @@ class ScheduleAlgoritm {
 
         bool &status;              // Scheduler running (1) not running (0)
         int &newd;
+        int &newd_len;
         int seek;                  // Cost of seeking from i to i+1
         int rotation;              // Cost of switching direction (L -> R) or (R -> L)
         int read_write;            // Cost of performing Read or Write

@@ -61,7 +61,7 @@ class Clook : public ScheduleAlgoritm {
             this->formatOutputToFile();
         }
 
-        Clook(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
+        Clook(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int &newd_len) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd, newd_len) {
             this -> alg_name = "Clook (Circular LOOK)";
             this -> file_name = "output/clook_output.txt";
             this -> fout.open(this -> file_name);

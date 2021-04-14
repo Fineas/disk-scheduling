@@ -1,7 +1,43 @@
+New element available, total= 8
+Queue = [ 98, ]
+
+New element available, total= 8
+Queue = [ 98, 183, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, 124, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
+
+New element available, total= 4
+Queue = [ 88, ]
+
+New element available, total= 4
+Queue = [ 88, 99, ]
+
+New element available, total= 4
+Queue = [ 88, 99, 22, ]
+
+New element available, total= 4
+Queue = [ 88, 99, 22, 11, ]
+
 ======================================
 SCAN (Elevator)
 ======================================
-Schedule = [ 98, 200, 37, 14, 0, 65, 67, 88, 99, 200, 22, 11, ]
+Schedule = [ 14, 37, 65, 67, 98, 122, 124, 183, 200, 99, 88, 22, 11, ]
 
-Total Cost = 4185
+Total Cost = 2205
 

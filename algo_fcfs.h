@@ -23,7 +23,6 @@ class Fcfs : public virtual ScheduleAlgoritm {
                 this->setQueue();
 
                 while(!this->queue.empty()) {
-                    //this -> displayQueue();
                     this->setQueue();
 
                     std :: vector<int>::iterator it = this -> queue.begin(); 
@@ -62,9 +61,10 @@ class Fcfs : public virtual ScheduleAlgoritm {
             }
             //this->displayTrace();
             this->formatOutputToFile();
+            
         }
 
-        Fcfs(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
+        Fcfs(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int &newd_len) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd, newd_len) {
             this -> alg_name = "First Come First Serve (FCFS)";
             this -> file_name = "output/fcfs_output.txt";
             this -> fout.open(this -> file_name);

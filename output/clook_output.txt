@@ -1,7 +1,43 @@
+New element available, total= 8
+Queue = [ 98, ]
+
+New element available, total= 8
+Queue = [ 98, 183, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, 124, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
+
+New element available, total= 8
+Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
+
+New element available, total= 4
+Queue = [ 88, ]
+
+New element available, total= 4
+Queue = [ 88, 99, ]
+
+New element available, total= 4
+Queue = [ 88, 99, 22, ]
+
+New element available, total= 4
+Queue = [ 88, 99, 22, 11, ]
+
 ======================================
 Clook (Circular LOOK)
 ======================================
-Schedule = [ 98, 37, 14, 65, 67, 88, 99, 22, 11, ]
+Schedule = [ 14, 37, 65, 67, 98, 122, 124, 183, 22, 88, 99, 11, ]
 
-Total Cost = 4910
+Total Cost = 3090
 

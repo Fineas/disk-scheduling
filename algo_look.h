@@ -81,7 +81,7 @@ class Look : public ScheduleAlgoritm {
             this->formatOutputToFile();
         }
 
-        Look(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
+        Look(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int &newd_len) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd, newd_len) {
             this -> alg_name = "Look";
             this -> file_name = "output/look_output.txt";
             this -> fout.open(this -> file_name);

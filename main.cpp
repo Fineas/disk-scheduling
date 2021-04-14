@@ -15,6 +15,7 @@
 
 std :: vector<int> initial_queue;
 std :: vector<int> extra_queue;
+int new_que_len = 0;
 int start = 0;
 int newd_flg[] = {0,0,0,0,0,0};
 
@@ -32,22 +33,27 @@ void read_data(std::string file_name){
     int tmp = 0;
     // Read data into queue
     data_in >> start;
-    for(int i = 0; data_in; i++) {
+    for(int i = 0; !data_in.eof(); i++) {
         data_in >> tmp;
-        initial_queue.push_back(tmp);
+        extra_queue.push_back(tmp);
+    }
+    new_que_len = extra_queue.size();
+    for (std :: vector<int>::iterator it = extra_queue.begin(); it != extra_queue.end(); ++it) {
+        initial_queue.push_back(*it);
         memset(newd_flg,1,6*sizeof(int));
-        // newd_flg[4] = 1;
-        while(newd_flg[4] != 0 &&
-              newd_flg[1] != 0 &&
-              newd_flg[2] != 0 &&
-              newd_flg[3] != 0 &&
-              newd_flg[4] != 0 &&
+        while(newd_flg[0] != 0 ||
+              newd_flg[1] != 0 ||
+              newd_flg[2] != 0 ||
+              newd_flg[3] != 0 ||
+              newd_flg[4] != 0 ||
               newd_flg[5] != 0){
             continue;
         }
-        std::cout<<"A fost citit nr "<<tmp<<" citesc urmatorul\n";
+        std::cout<<"A fost citit nr "<<*it<<" , citesc urmatorul\n";
         initial_queue.clear();
     }
+    new_que_len = 0;
+    extra_queue.clear();
     data_in.close();
 }
 
@@ -73,12 +79,12 @@ int main(int argc, char** argv){
 
     // Create Instances of Sch Algorithms
     std :: vector<ScheduleAlgoritm *> algorithms;
-    algorithms.push_back(new Fcfs(sk, r, rw, blk, start, initial_queue, flag, newd_flg[0]));
-    algorithms.push_back(new Sstf(sk, r, rw, blk, start, initial_queue, flag, newd_flg[1]));
-    algorithms.push_back(new Scan(sk, r, rw, blk, start, initial_queue, flag, newd_flg[2]));
-    algorithms.push_back(new Cscan(sk, r, rw, blk, start, initial_queue, flag, newd_flg[3]));
-    algorithms.push_back(new Look(sk, r, rw, blk, start, initial_queue, flag, newd_flg[4]));
-    algorithms.push_back(new Clook(sk, r, rw, blk, start, initial_queue, flag, newd_flg[5]));
+    algorithms.push_back(new Fcfs(sk, r, rw, blk, start, initial_queue, flag, newd_flg[0], new_que_len));
+    algorithms.push_back(new Sstf(sk, r, rw, blk, start, initial_queue, flag, newd_flg[1], new_que_len));
+    algorithms.push_back(new Scan(sk, r, rw, blk, start, initial_queue, flag, newd_flg[2], new_que_len));
+    algorithms.push_back(new Cscan(sk, r, rw, blk, start, initial_queue, flag, newd_flg[3], new_que_len));
+    algorithms.push_back(new Look(sk, r, rw, blk, start, initial_queue, flag, newd_flg[4], new_que_len));
+    algorithms.push_back(new Clook(sk, r, rw, blk, start, initial_queue, flag, newd_flg[5], new_que_len));
 
     // Create Threads
     for (int i = 0; i < 6; ++i) {
@@ -88,18 +94,22 @@ int main(int argc, char** argv){
 
     // READ FIRST QUEUE
     std::cout<<"Citim set1 \n";
-    read_data("./data2.in");
+    read_data("data2.in");
+    new_que_len = 0;
     usleep(1000000);
 
     // READ SECOND QUEUE
     std::cout<<"Citim set2 \n";
-    read_data("./data3.in");
+    read_data("data3.in");
+    new_que_len = 0;
     usleep(1000000);
+
 
     flag = false;
 
     // Join Threds
     for (auto& th : schedule_threads) th->join();
+    std::cout<<"Am oprit threadurile\n";
     // schedule_threads[0]->join();
 
 

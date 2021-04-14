@@ -67,7 +67,7 @@ class Scan : public ScheduleAlgoritm {
             this->formatOutputToFile();
         }
 
-        Scan(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd) {
+        Scan(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int &newd_len) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd, newd_len) {
             this -> alg_name = "SCAN (Elevator)";
             this -> file_name = "output/scan_output.txt";
             this -> fout.open(this -> file_name);
