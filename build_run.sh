@@ -1,0 +1,1 @@
+g++ main.cpp -lpthread -o executable; ./executable
