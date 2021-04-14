@@ -1,3 +1,7 @@
+======================================
+First Come First Serve (FCFS)
+======================================
+[*] ====== Reading new data in Queue
 New element available, total= 8
 Queue = [ 98, ]
 
@@ -22,22 +26,71 @@ Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
 New element available, total= 8
 Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
 
-New element available, total= 4
-Queue = [ 88, ]
+Current Cost: [ 0];
+Current Head at: [ 53];
+Next block to be scheduled: [ 98], distance= 45;
+Changing Direction to Right;
+Current Cost: [ 245];
+Current Head at: [ 98];
+Next block to be scheduled: [ 183], distance= 85;
+[*] ====== Reading new data in Queue
+New element available, total= 5
+Queue = [ 37, 122, 14, 124, 65, 67, 77, ]
 
-New element available, total= 4
-Queue = [ 88, 99, ]
+New element available, total= 5
+Queue = [ 37, 122, 14, 124, 65, 67, 77, 88, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, ]
+New element available, total= 5
+Queue = [ 37, 122, 14, 124, 65, 67, 77, 88, 99, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, 11, ]
+New element available, total= 5
+Queue = [ 37, 122, 14, 124, 65, 67, 77, 88, 99, 22, ]
 
+New element available, total= 5
+Queue = [ 37, 122, 14, 124, 65, 67, 77, 88, 99, 22, 11, ]
+
+Current Cost: [ 690];
+Current Head at: [ 183];
+Next block to be scheduled: [ 37], distance= 146;
+Changing Direction to Left;
+Current Cost: [ 1450];
+Current Head at: [ 37];
+Next block to be scheduled: [ 122], distance= 85;
+Changing Direction to Right;
+Current Cost: [ 1905];
+Current Head at: [ 122];
+Next block to be scheduled: [ 14], distance= 108;
+Changing Direction to Left;
+Current Cost: [ 2475];
+Current Head at: [ 14];
+Next block to be scheduled: [ 124], distance= 110;
+Changing Direction to Right;
+Current Cost: [ 3055];
+Current Head at: [ 124];
+Next block to be scheduled: [ 65], distance= 59;
+Changing Direction to Left;
+Current Cost: [ 3380];
+Current Head at: [ 65];
+Next block to be scheduled: [ 67], distance= 2;
+Changing Direction to Right;
+Current Cost: [ 3420];
+Current Head at: [ 67];
+Next block to be scheduled: [ 77], distance= 10;
+Current Cost: [ 3490];
+Current Head at: [ 77];
+Next block to be scheduled: [ 88], distance= 11;
+Current Cost: [ 3565];
+Current Head at: [ 88];
+Next block to be scheduled: [ 99], distance= 11;
+Current Cost: [ 3640];
+Current Head at: [ 99];
+Next block to be scheduled: [ 22], distance= 77;
+Changing Direction to Left;
+Current Cost: [ 4055];
+Current Head at: [ 22];
+Next block to be scheduled: [ 11], distance= 11;
 ======================================
-First Come First Serve (FCFS)
-======================================
-Schedule = [ 98, 183, 37, 122, 14, 124, 65, 67, 88, 99, 22, 11, ]
+Schedule = [ 53, 98, 183, 37, 122, 14, 124, 65, 67, 77, 88, 99, 22, 11, ]
 
-Total Cost = 4375
+Total Cost = 4130
 

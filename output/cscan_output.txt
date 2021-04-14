@@ -1,3 +1,7 @@
+======================================
+Cscan (Circular Elevator)
+======================================
+[*] ====== Reading new data in Queue
 New element available, total= 8
 Queue = [ 98, ]
 
@@ -22,22 +26,72 @@ Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
 New element available, total= 8
 Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
 
-New element available, total= 4
-Queue = [ 88, ]
+Current Cost: [ 0];
+Current Head at: [ 53];
+Next block to be scheduled: [ 65], distance= 12;
+Changing Direction to Right;
+Current Cost: [ 90];
+Current Head at: [ 65];
+Next block to be scheduled: [ 67], distance= 2;
+Changing Direction to Right;
+[*] ====== Reading new data in Queue
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, ]
 
-New element available, total= 4
-Queue = [ 88, 99, ]
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, ]
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, 99, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, 11, ]
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, 99, 22, ]
 
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, 99, 22, 11, ]
+
+Current Cost: [ 130];
+Current Head at: [ 67];
+Next block to be scheduled: [ 77], distance= 10;
+Changing Direction to Right;
+Current Cost: [ 210];
+Current Head at: [ 77];
+Next block to be scheduled: [ 88], distance= 11;
+Changing Direction to Right;
+Current Cost: [ 295];
+Current Head at: [ 88];
+Next block to be scheduled: [ 98], distance= 10;
+Changing Direction to Right;
+Current Cost: [ 375];
+Current Head at: [ 98];
+Next block to be scheduled: [ 99], distance= 1;
+Changing Direction to Right;
+Current Cost: [ 410];
+Current Head at: [ 99];
+Next block to be scheduled: [ 122], distance= 23;
+Changing Direction to Right;
+Current Cost: [ 555];
+Current Head at: [ 122];
+Next block to be scheduled: [ 124], distance= 2;
+Changing Direction to Right;
+Current Cost: [ 595];
+Current Head at: [ 124];
+Next block to be scheduled: [ 183], distance= 59;
+Changing Direction to Right;
+Current Cost: [ 920];
+Current Head at: [ 183];
+Next block to be scheduled: [ 200], distance= 17;
+Changing Direction to Right;
+Current Cost: [ 1035];
+Current Head at: [ 200];
+Next block to be scheduled: [ 0], distance= 200;
+Changing Direction to Left;
+Current Cost: [ 2065];
+Current Head at: [ 0];
+Next block to be scheduled: [ 11], distance= 11;
+Changing Direction to Right;
 ======================================
-Cscan (Circular Elevator)
-======================================
-Schedule = [ 14, 37, 65, 67, 98, 122, 124, 183, 200, 0, 11, 22, 88, 99, ]
+Schedule = [ 53, 65, 67, 77, 88, 98, 99, 122, 124, 183, 200, 0, 11, ]
 
-Total Cost = 2775
+Total Cost = 2150
 

@@ -1,3 +1,7 @@
+======================================
+Shortest Seek Time First (SSTF)
+======================================
+[*] ====== Reading new data in Queue
 New element available, total= 8
 Queue = [ 98, ]
 
@@ -22,22 +26,62 @@ Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
 New element available, total= 8
 Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
 
-New element available, total= 4
-Queue = [ 88, ]
+Current Cost: [ 0];
+Current Head at: [ 53];
+Next block to be scheduled: [ 65], distance= 12;
+Changing Direction to Right;
+Current Cost: [ 80];
+Current Head at: [ 65];
+Next block to be scheduled: [ 67], distance= 2;
+[*] ====== Reading new data in Queue
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, ]
 
-New element available, total= 4
-Queue = [ 88, 99, ]
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, ]
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, 99, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, 11, ]
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, 99, 22, ]
 
+New element available, total= 5
+Queue = [ 98, 183, 37, 122, 14, 124, 77, 88, 99, 22, 11, ]
+
+Current Cost: [ 110];
+Current Head at: [ 67];
+Next block to be scheduled: [ 77], distance= 10;
+Current Cost: [ 180];
+Current Head at: [ 77];
+Next block to be scheduled: [ 88], distance= 11;
+Current Cost: [ 255];
+Current Head at: [ 88];
+Next block to be scheduled: [ 98], distance= 10;
+Current Cost: [ 325];
+Current Head at: [ 98];
+Next block to be scheduled: [ 99], distance= 1;
+Current Cost: [ 350];
+Current Head at: [ 99];
+Next block to be scheduled: [ 122], distance= 23;
+Current Cost: [ 485];
+Current Head at: [ 122];
+Next block to be scheduled: [ 124], distance= 2;
+Current Cost: [ 515];
+Current Head at: [ 124];
+Next block to be scheduled: [ 183], distance= 59;
+Current Cost: [ 830];
+Current Head at: [ 183];
+Next block to be scheduled: [ 37], distance= 146;
+Changing Direction to Left;
+Current Cost: [ 1590];
+Current Head at: [ 37];
+Next block to be scheduled: [ 22], distance= 15;
+Current Cost: [ 1685];
+Current Head at: [ 22];
+Next block to be scheduled: [ 14], distance= 8;
 ======================================
-Shortest Seek Time First (SSTF)
-======================================
-Schedule = [ 14, 37, 65, 67, 98, 122, 124, 183, 99, 88, 22, 11, ]
+Schedule = [ 53, 65, 67, 77, 88, 98, 99, 122, 124, 183, 37, 22, 14, ]
 
-Total Cost = 2025
+Total Cost = 1745
 

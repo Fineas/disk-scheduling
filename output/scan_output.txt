@@ -1,3 +1,7 @@
+======================================
+SCAN (Elevator)
+======================================
+[*] ====== Reading new data in Queue
 New element available, total= 8
 Queue = [ 98, ]
 
@@ -22,22 +26,72 @@ Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
 New element available, total= 8
 Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
 
-New element available, total= 4
-Queue = [ 88, ]
+Current Cost: [ 0];
+Current Head at: [ 53];
+Next block to be scheduled: [ 37], distance= 16;
+Changing Direction to Left;
+Current Cost: [ 110];
+Current Head at: [ 37];
+Next block to be scheduled: [ 14], distance= 23;
+Changing Direction to Left;
+[*] ====== Reading new data in Queue
+New element available, total= 5
+Queue = [ 98, 183, 122, 124, 65, 67, 77, ]
 
-New element available, total= 4
-Queue = [ 88, 99, ]
+New element available, total= 5
+Queue = [ 98, 183, 122, 124, 65, 67, 77, 88, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, ]
+New element available, total= 5
+Queue = [ 98, 183, 122, 124, 65, 67, 77, 88, 99, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, 11, ]
+New element available, total= 5
+Queue = [ 98, 183, 122, 124, 65, 67, 77, 88, 99, 22, ]
 
+New element available, total= 5
+Queue = [ 98, 183, 122, 124, 65, 67, 77, 88, 99, 22, 11, ]
+
+Current Cost: [ 255];
+Current Head at: [ 14];
+Next block to be scheduled: [ 11], distance= 3;
+Changing Direction to Left;
+Current Cost: [ 300];
+Current Head at: [ 11];
+Next block to be scheduled: [ 0], distance= 11;
+Changing Direction to Left;
+Current Cost: [ 385];
+Current Head at: [ 0];
+Next block to be scheduled: [ 22], distance= 22;
+Changing Direction to Right;
+Current Cost: [ 525];
+Current Head at: [ 22];
+Next block to be scheduled: [ 65], distance= 43;
+Changing Direction to Right;
+Current Cost: [ 770];
+Current Head at: [ 65];
+Next block to be scheduled: [ 67], distance= 2;
+Changing Direction to Right;
+Current Cost: [ 810];
+Current Head at: [ 67];
+Next block to be scheduled: [ 77], distance= 10;
+Changing Direction to Right;
+Current Cost: [ 890];
+Current Head at: [ 77];
+Next block to be scheduled: [ 88], distance= 11;
+Changing Direction to Right;
+Current Cost: [ 975];
+Current Head at: [ 88];
+Next block to be scheduled: [ 98], distance= 10;
+Changing Direction to Right;
+Current Cost: [ 1055];
+Current Head at: [ 98];
+Next block to be scheduled: [ 99], distance= 1;
+Changing Direction to Right;
+Current Cost: [ 1090];
+Current Head at: [ 99];
+Next block to be scheduled: [ 122], distance= 23;
+Changing Direction to Right;
 ======================================
-SCAN (Elevator)
-======================================
-Schedule = [ 14, 37, 65, 67, 98, 122, 124, 183, 200, 99, 88, 22, 11, ]
+Schedule = [ 53, 37, 14, 11, 0, 22, 65, 67, 77, 88, 98, 99, 122, ]
 
-Total Cost = 2205
+Total Cost = 1235
 

@@ -27,17 +27,22 @@ void debugQueue(std :: vector<int> queue){
     std :: cout << '\n';
 }
 
+//  === Read New Queue === 
 void read_data(std::string file_name){
     std :: ifstream data_in;
     data_in.open(file_name.c_str());
     int tmp = 0;
+
     // Read data into queue
     data_in >> start;
+    extra_queue.push_back(start);
     for(int i = 0; !data_in.eof(); i++) {
         data_in >> tmp;
         extra_queue.push_back(tmp);
     }
+
     new_que_len = extra_queue.size();
+    
     for (std :: vector<int>::iterator it = extra_queue.begin(); it != extra_queue.end(); ++it) {
         initial_queue.push_back(*it);
         memset(newd_flg,1,6*sizeof(int));
@@ -52,6 +57,7 @@ void read_data(std::string file_name){
         std::cout<<"A fost citit nr "<<*it<<" , citesc urmatorul\n";
         initial_queue.clear();
     }
+    
     new_que_len = 0;
     extra_queue.clear();
     data_in.close();
@@ -75,6 +81,7 @@ int main(int argc, char** argv){
     fin >> r;
     fin >> rw;
     fin >> blk;
+    fin >> start;
     fin.close();
 
     // Create Instances of Sch Algorithms
@@ -91,12 +98,11 @@ int main(int argc, char** argv){
         schedule_threads[i] = new std :: thread(std::ref(*algorithms[i]));
     }
 
-
     // READ FIRST QUEUE
     std::cout<<"Citim set1 \n";
     read_data("data2.in");
     new_que_len = 0;
-    usleep(1000000);
+    usleep(100000);
 
     // READ SECOND QUEUE
     std::cout<<"Citim set2 \n";
@@ -104,13 +110,11 @@ int main(int argc, char** argv){
     new_que_len = 0;
     usleep(1000000);
 
-
+    // STOP THREADS
     flag = false;
 
     // Join Threds
     for (auto& th : schedule_threads) th->join();
-    std::cout<<"Am oprit threadurile\n";
-    // schedule_threads[0]->join();
 
 
     return 0;

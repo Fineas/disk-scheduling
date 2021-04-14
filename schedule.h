@@ -15,7 +15,9 @@ class ScheduleAlgoritm {
             this -> run();
         }
 
+
         virtual void run() = 0;
+
 
         ScheduleAlgoritm(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int &newd_len) : queue_data{queue_data}, status{flag}, newd{newd}, newd_len{newd_len} {
             /*
@@ -30,6 +32,7 @@ class ScheduleAlgoritm {
             this -> direction = 0;
         }
 
+
         ~ScheduleAlgoritm() {
             /*
                 Deconstructor
@@ -37,6 +40,7 @@ class ScheduleAlgoritm {
             this -> queue.clear();
             this -> fout.close();
         };
+
 
         ScheduleAlgoritm(const ScheduleAlgoritm& obj) : queue_data{obj.queue_data}, status{obj.status}, newd{obj.newd}, newd_len{obj.newd_len} {
             /*
@@ -56,24 +60,28 @@ class ScheduleAlgoritm {
             this -> alg_name = obj.alg_name;
         }
 
+
         void setQueue() { 
             /* 
                 Routine to update the Queue
             */
-            int count = 0;
-            // this->fout << "Nou ajuns\n";
-            while(count != this->newd_len && this->newd_len != 0){
-                // this->fout << "Sunt aiiici " << count << " " << this->newd_len << "\n";
-                if(this->newd){
-                    this->fout << "New element available, total= " << this->newd_len << "\n";
-                    this->queue.insert(this->queue.end(), this->queue_data.begin(), this->queue_data.end());
-                    this->writeToFile(this->strQueue());
-                    this->newd = 0;
-                    count++;
+            if(this->newd){
+                this->fout << "[*] ====== Reading new data in Queue\n";
+                int count = 0;
+                while(count != this->newd_len && this->newd_len != 0){
+                    // this->fout << "Sunt aiiici " << count << " " << this->newd_len << "\n";
+                    if(this->newd){
+                        this->fout << "New element available, total= " << this->newd_len << "\n";
+                        this->queue.insert(this->queue.end(), this->queue_data.begin(), this->queue_data.end());
+                        this->writeToFile(this->strQueue());
+                        this->newd = 0;
+                        count++;
+                    }
                 }
+                count = 0;
             }
-            count = 0;
         }
+
 
         void displayQueue(){ 
             /* 
@@ -86,6 +94,7 @@ class ScheduleAlgoritm {
             std :: cout << "]" << std :: endl;
         }
 
+
         void displayTrace(){
             /* 
                 Routine to print the final Trace
@@ -97,6 +106,7 @@ class ScheduleAlgoritm {
             std :: cout << "]" << std :: endl;            
         }
 
+
         void formatOutputToFile() {
             /* 
                 Write final output to file
@@ -104,8 +114,6 @@ class ScheduleAlgoritm {
             try{
 
                 std :: string border = "======================================";
-                this->fout << border << std :: endl;
-                this->fout << this -> alg_name << std :: endl;
                 this->fout << border << std :: endl;
             
                 this->fout << "Schedule = [ ";
@@ -123,6 +131,7 @@ class ScheduleAlgoritm {
 
         }
 
+
         std::string strQueue(){
             /* 
                 Return a string representation of the current queue
@@ -136,6 +145,7 @@ class ScheduleAlgoritm {
             ret.append("]\n");
             return ret;
         }
+
 
         void writeToFile(std::string data) {
             /* 
@@ -151,8 +161,8 @@ class ScheduleAlgoritm {
     protected:
 
         bool &status;              // Scheduler running (1) not running (0)
-        int &newd;
-        int &newd_len;
+        int &newd;                 // New queue flag
+        int &newd_len;             // New queue len
         int seek;                  // Cost of seeking from i to i+1
         int rotation;              // Cost of switching direction (L -> R) or (R -> L)
         int read_write;            // Cost of performing Read or Write
@@ -161,7 +171,7 @@ class ScheduleAlgoritm {
         int cost_count;            // Total Cost of the schedule
         int direction;             // Moving to left (1) moving to right (2) starting point (0)
         std :: string alg_name;    // Name of the scheduling algorithm
-        std :: string file_name;
+        std :: string file_name;   // Name of the output file
         // std :: mutex mtx;
         std :: vector<int> queue;  // Work Queue
         std :: vector<int> trace;  // Store the order

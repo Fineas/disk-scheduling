@@ -1,3 +1,7 @@
+======================================
+Look
+======================================
+[*] ====== Reading new data in Queue
 New element available, total= 8
 Queue = [ 98, ]
 
@@ -22,22 +26,48 @@ Queue = [ 98, 183, 37, 122, 14, 124, 65, ]
 New element available, total= 8
 Queue = [ 98, 183, 37, 122, 14, 124, 65, 67, ]
 
-New element available, total= 4
-Queue = [ 88, ]
+Current Cost: [ 0];
+Current Head at: [ 64];
+Next block to be scheduled: [ 65];
+Current Head at: [ 66];
+Next block to be scheduled: [ 67];
+Current Head at: [ 97];
+Next block to be scheduled: [ 98];
+Current Head at: [ 121];
+Next block to be scheduled: [ 122];
+Current Head at: [ 123];
+Next block to be scheduled: [ 124];
+Current Head at: [ 182];
+Next block to be scheduled: [ 183];
+Changing Direction to Right;
+[*] ====== Reading new data in Queue
+New element available, total= 5
+Queue = [ 77, ]
 
-New element available, total= 4
-Queue = [ 88, 99, ]
+New element available, total= 5
+Queue = [ 77, 88, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, ]
+New element available, total= 5
+Queue = [ 77, 88, 99, ]
 
-New element available, total= 4
-Queue = [ 88, 99, 22, 11, ]
+New element available, total= 5
+Queue = [ 77, 88, 99, 22, ]
 
+New element available, total= 5
+Queue = [ 77, 88, 99, 22, 11, ]
+
+Current Cost: [ 2670];
+Current Head at: [ 21];
+Next block to be scheduled: [ 22];
+Current Head at: [ 76];
+Next block to be scheduled: [ 77];
+Current Head at: [ 87];
+Next block to be scheduled: [ 88];
+Current Head at: [ 98];
+Next block to be scheduled: [ 99];
+Changing Direction to Right;
 ======================================
-Look
-======================================
-Schedule = [ 14, 37, 65, 67, 98, 122, 124, 183, 22, 88, 99, 11, ]
+Schedule = [ 53, 65, 67, 98, 122, 124, 183, 37, 14, 22, 77, 88, 99, 11, ]
 
-Total Cost = 4460
+Total Cost = 4215
 

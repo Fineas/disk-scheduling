@@ -10,10 +10,13 @@ class Cscan : public ScheduleAlgoritm {
         void run() { // go right
 
             std::cout<<"Running inside "<<this->alg_name<<std::endl;
+            std :: string border = "======================================";
+            this->fout << border << std :: endl;
+            this->fout << this -> alg_name << std :: endl;
+            this->fout << border << std :: endl;
 
             this->direction = 2;
             this->setQueue();
-            //this->displayQueue();
 
             if(this->queue.size() != 0){
                 this -> trace.push_back(this->head);
@@ -26,8 +29,7 @@ class Cscan : public ScheduleAlgoritm {
                 int distance = 0;
 
                 if(this->queue.size() >= 1){
-                    
-                    //this->displayQueue();
+                    this->fout << "Current Cost: [ "<<this->cost_count<<"];\n";
 
                     // determin next move position
                     if(this->head != this->blocks && this->direction == 2) { // go to next left elem
@@ -42,15 +44,22 @@ class Cscan : public ScheduleAlgoritm {
                     
                     distance = abs(current_track - this->head);
 
+                    this->fout << "Current Head at: [ "<<this->head<<"];\n";
+                    this->fout << "Next block to be scheduled: [ "<<current_track<<"], distance= "<<distance<<";\n";
+
                     this -> cost_count += distance * this->seek;
                     this -> cost_count += this->read_write;
 
                     // check if direction is changed
                     if(this->head < current_track) {
+                        this->fout << "Changing Direction to Right;\n";
                         this->direction = 2;
+                        this -> cost_count += rotation;
                     }
                     else{
+                        this->fout << "Changing Direction to Left;\n";
                         this->direction = 1;
+                        this -> cost_count += rotation;
                     }
 
                     this -> head = current_track; // update head
@@ -61,18 +70,19 @@ class Cscan : public ScheduleAlgoritm {
                 }
 
             }
-            //this->displayTrace();
+
             this->formatOutputToFile();
         }
 
         Cscan(int sk, int r, int rw, int blk, int start, std::vector<int> &queue_data, bool &flag, int &newd, int&newd_len) : ScheduleAlgoritm(sk, r, rw, blk, start, queue_data, flag, newd, newd_len) {
+            
+            this -> trace.push_back(this->head);
             this -> alg_name = "Cscan (Circular Elevator)";
             this -> file_name = "output/cscan_output.txt";
             this -> fout.open(this -> file_name);
+
         }
 
-        
-                
 
     private:
 
